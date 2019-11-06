@@ -33,7 +33,7 @@ class ParkingLotTest {
             Car("Brown", "GJ-01-EW1234")
         )
         val stdoutMessage =
-            cars.mapIndexed { index, car: Car -> "Parking Car with License Plate: ${car.licensePlate} and color: ${car.color} at position $index" }
+            cars.mapIndexed { index, _: Car -> "Allocated Slot Number $index" }
                 .joinToString("\n")
 
         cars.forEach { car -> parkingLot.parkCar(car) }

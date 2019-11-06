@@ -29,9 +29,13 @@ class ParkingLot(private val capacity: Int) {
             val parkingSpot = availableSpots.first()
             availableSpots.removeAt(0)
             occupiedSpots[car] = parkingSpot
-            println("Parking Car with License Plate: ${car.licensePlate} and color: ${car.color} at position ${parkingSpot.position}")
+            println("Allocated Slot Number ${parkingSpot.position}")
         } else
             println("Cannot Park call, all parking slots are full")
+    }
+
+    fun removeCar(position: Int) {
+
     }
 
 
