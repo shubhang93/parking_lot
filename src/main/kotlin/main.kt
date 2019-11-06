@@ -24,5 +24,12 @@ class ParkingLot(private val capacity: Int) {
 
 
 fun main(args: Array<String>) {
-
+    when (args.size) {
+        0 -> {
+            // Interactive Mode
+        }
+        1 -> {
+            // Read Commands from file
+        }
+    }
 }
