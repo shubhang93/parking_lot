@@ -1,2 +1,2 @@
-# parking_lot
+# Parking Lot
 An automated Parking lot ticketing system
