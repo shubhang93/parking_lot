@@ -1,9 +1,14 @@
 data class ParkingSpot(val position: Int, val car: Car)
 data class Car(val color: String, val licensePlate: String)
 
+enum class Command(val command: String) {
+    CREATE_PARKING_LOT("create_parking_lot"),
+    PARK_CAR("park")
+}
+
+
 class ParkingLot(private val capacity: Int) {
     private val availableSpots = mutableListOf<ParkingSpot>()
-
 
     fun isParkingLotFull(): Boolean {
         return availableSpots.size == capacity
@@ -18,6 +23,6 @@ class ParkingLot(private val capacity: Int) {
 }
 
 
-fun main() {
+fun main(args: Array<String>) {
 
 }
