@@ -54,6 +54,6 @@ object ParkingServiceImpl : ParkingLotService {
     }
 
     override fun getSlotNumberByCarLicensePlate(licensePlate: String): Int? {
-        return licensePlateToCarMapping[]
+        return licensePlateToCarMapping[licensePlate]?.position
     }
 }
