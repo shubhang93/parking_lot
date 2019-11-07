@@ -41,7 +41,9 @@ object ParkingServiceImpl : ParkingLotService {
     }
 
     override fun unParkCar(parkingSpot: ParkingSpot) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        occupiedSpots.remove(parkingSpot)
+        availableSpots.add(parkingSpot)
+        availableSpots.sortBy { it.position }
     }
 
     override fun getSlotsByCarColor(color: String): List<Car> {
