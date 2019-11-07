@@ -9,7 +9,7 @@ import java.io.PrintStream
 
 class ParkingLotTest {
 
-    private val parkingLotService = ParkingLotServiceImpl();
+    private val parkingLotService = ParkingLotServiceImpl.initializeParkingLot(6);
     private val outContent = ByteArrayOutputStream()
     private val originalOut = System.out
 
@@ -38,7 +38,7 @@ class ParkingLotTest {
             cars.mapIndexed { index, _: Car -> "Allocated Slot Number $index" }
                 .joinToString("\n")
 
-        cars.forEach { car -> parkingLot.parkCar(car) }
+        cars.forEach { car -> parkingLotService.park(car) }
         assertEquals(stdoutMessage, outContent.toString().trim())
     }
 }
