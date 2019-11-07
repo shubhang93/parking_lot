@@ -7,6 +7,7 @@ object ParkingServiceImpl : ParkingLotService {
 
     private val availableSpots = mutableListOf<ParkingSpot>()
     private val occupiedSpots = mutableMapOf<ParkingSpot, Car>()
+    private val licensePlateToCarMapping = mutableMapOf<String, ParkingSpot>()
     private var maxSlots: Int = 0
 
     fun createParkingLot(capacity: Int) {
@@ -21,6 +22,7 @@ object ParkingServiceImpl : ParkingLotService {
             val parkingSpot = availableSpots.first()
             availableSpots.removeAt(0)
             occupiedSpots[parkingSpot] = car
+            licensePlateToCarMapping[car.licensePlate] = parkingSpot
             println("Allocated Slot Number ${parkingSpot.position}")
         } else
             println("Cannot Park Car, all parking slots are full")
@@ -51,7 +53,7 @@ object ParkingServiceImpl : ParkingLotService {
         return occupiedSpots.filter { parkingSpotEntry -> parkingSpotEntry.value.color == color }.map { it.value }
     }
 
-    override fun getSlotsByCarLicensePlate(licensePlate: String): List<Car> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getSlotNumberByCarLicensePlate(licensePlate: String): Int? {
+        return licensePlateToCarMapping[]
     }
 }

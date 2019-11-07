@@ -12,7 +12,7 @@ interface ParkingLotService {
 
     fun getSlotsByCarColor(color: String): List<Car>
 
-    fun getSlotsByCarLicensePlate(licensePlate: String): List<Car>
+    fun getSlotNumberByCarLicensePlate(licensePlate: String): Int?
 
     fun isParkingLotFull(): Boolean
 
