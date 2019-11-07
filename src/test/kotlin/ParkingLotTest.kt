@@ -35,7 +35,7 @@ class ParkingLotTest {
             Car("Brown", "GJ-01-EW1234")
         )
         val stdoutMessage =
-            cars.mapIndexed { index, _: Car -> "Allocated Slot Number $index" }
+            cars.mapIndexed { index, _: Car -> "Allocated Slot Number ${index+1}" }
                 .joinToString("\n")
 
         cars.forEach { car -> parkingLotService.park(car) }
