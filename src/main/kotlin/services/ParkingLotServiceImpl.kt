@@ -19,12 +19,13 @@ class ParkingLotServiceImpl(val capacity: Int) : ParkingLotService {
 
 
     companion object {
-        lateinit var instance: ParkingLotServiceImpl
+        private var instance: ParkingLotServiceImpl? = null
         fun initializeParkingLot(capacity: Int): ParkingLotServiceImpl {
             if (instance == null) {
                 instance = ParkingLotServiceImpl(capacity)
-                return instance
-            } else return instance
+                return instance!!
+            } else
+                return instance!!
         }
     }
 
