@@ -12,7 +12,7 @@ class ParkingLotServiceImpl(val capacity: Int) : ParkingLotService {
 
 
     init {
-        for (spotPosition in 1..maxSlots) {
+        for (spotPosition in 1..capacity) {
             availableSpots.add(ParkingSpot(spotPosition))
         }
     }
