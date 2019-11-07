@@ -3,17 +3,28 @@ package services
 import domain.Car
 import domain.ParkingSpot
 
-class ParkingLotServiceImpl : ParkingLotService {
+class ParkingLotServiceImpl(val capacity: Int) : ParkingLotService {
 
     private val availableSpots = mutableListOf<ParkingSpot>()
     private val occupiedSpots = mutableMapOf<ParkingSpot, Car>()
     private val licensePlateToCarMapping = mutableMapOf<String, ParkingSpot>()
     private var maxSlots: Int = 0
 
-    fun createParkingLot(capacity: Int) {
-        maxSlots = capacity
+
+    init {
         for (spotPosition in 1..maxSlots) {
             availableSpots.add(ParkingSpot(spotPosition))
+        }
+    }
+
+
+    companion object {
+        lateinit var instance: ParkingLotServiceImpl
+        fun initializeParkingLot(capacity: Int): ParkingLotServiceImpl {
+            if (instance == null) {
+                instance = ParkingLotServiceImpl(capacity)
+                return instance
+            } else return instance
         }
     }
 

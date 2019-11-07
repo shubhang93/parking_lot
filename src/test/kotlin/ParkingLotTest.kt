@@ -2,13 +2,14 @@ import domain.Car
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import services.ParkingLotServiceImpl
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
 
 class ParkingLotTest {
 
-    private val parkingLot = ParkingLot(6);
+    private val parkingLotService = ParkingLotServiceImpl();
     private val outContent = ByteArrayOutputStream()
     private val originalOut = System.out
 
