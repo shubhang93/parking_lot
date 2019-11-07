@@ -30,8 +30,14 @@ object ParkingServiceImpl : ParkingLotService {
         return availableSpots.size == 0
     }
 
-    override fun getStatus(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getStatus(): List<Map<String, String>> {
+        return occupiedSpots.map { parkingSpotEntry ->
+            mapOf(
+                "slotNumber" to "${parkingSpotEntry.key.position}",
+                "registrationNumber" to parkingSpotEntry.value.licensePlate,
+                "color" to parkingSpotEntry.value.color
+            )
+        }.sortedBy { it["slotNumber"] }
     }
 
     override fun unParkCar(parkingSpot: ParkingSpot) {
