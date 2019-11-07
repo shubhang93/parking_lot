@@ -17,7 +17,11 @@ object ParkingServiceImpl : ParkingLotService {
     }
 
     override fun park(car: Car) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    }
+
+    override fun isParkingLotFull(): Boolean {
+
     }
 
     override fun getStatus(): String {

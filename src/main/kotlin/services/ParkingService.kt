@@ -14,4 +14,7 @@ interface ParkingLotService {
 
     fun getSlotsByCarLicensePlate(licensePlate: String): List<Car>
 
+    fun isParkingLotFull(): Boolean
+
+
 }
