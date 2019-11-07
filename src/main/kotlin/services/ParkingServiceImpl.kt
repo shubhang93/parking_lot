@@ -17,11 +17,17 @@ object ParkingServiceImpl : ParkingLotService {
     }
 
     override fun park(car: Car) {
-
+        if (!isParkingLotFull()) {
+            val parkingSpot = availableSpots.first()
+            availableSpots.removeAt(0)
+            occupiedSpots[parkingSpot] = car
+            println("Allocated Slot Number ${parkingSpot.position}")
+        } else
+            println("Cannot Park Car, all parking slots are full")
     }
 
     override fun isParkingLotFull(): Boolean {
-
+        return availableSpots.size == 0
     }
 
     override fun getStatus(): String {
