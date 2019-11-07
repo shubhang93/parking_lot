@@ -44,10 +44,11 @@ object ParkingServiceImpl : ParkingLotService {
         occupiedSpots.remove(parkingSpot)
         availableSpots.add(parkingSpot)
         availableSpots.sortBy { it.position }
+        println("Slot Number ${parkingSpot.position} is free")
     }
 
     override fun getSlotsByCarColor(color: String): List<Car> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return occupiedSpots.filter { parkingSpotEntry -> parkingSpotEntry.value.color == color }.map { it.value }
     }
 
     override fun getSlotsByCarLicensePlate(licensePlate: String): List<Car> {
