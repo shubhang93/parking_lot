@@ -16,5 +16,7 @@ interface ParkingLotService {
 
     fun isParkingLotFull(): Boolean
 
+    fun getFreeSlotCount(): Int
+
 
 }

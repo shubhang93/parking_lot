@@ -67,4 +67,6 @@ class ParkingLotServiceImpl(capacity: Int) : ParkingLotService {
     override fun getSlotNumberByCarLicensePlate(licensePlate: String): Int? {
         return licensePlateToCarMapping[licensePlate]?.position
     }
+
+    override fun getFreeSlotCount(): Int = availableSpots.size
 }
