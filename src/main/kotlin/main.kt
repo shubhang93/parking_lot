@@ -28,6 +28,7 @@ fun main(args: Array<String>) {
     when (args.size) {
         0 -> {
             // Interactive Mode
+            println("Welcome To Interactive Mode, awaiting User Input: ")
             runInteractiveCli(parkingService)
         }
         1 -> {
