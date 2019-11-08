@@ -2,12 +2,13 @@ import domain.Car
 import domain.ParkingSpot
 import org.junit.*
 import org.junit.Assert.assertEquals
+import org.junit.runners.MethodSorters
 import services.ParkingLotService
 import services.ParkingLotServiceImpl
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
-
+@FixMethodOrder(MethodSorters.JVM)
 class ParkingLotTest {
 
 
