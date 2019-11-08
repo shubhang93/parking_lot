@@ -1,7 +1,7 @@
 import domain.Car
+import org.junit.*
 import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import services.ParkingLotService
 import services.ParkingLotServiceImpl
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
@@ -14,15 +14,45 @@ class ParkingLotTest {
     private val originalOut = System.out
 
 
+    companion object {
+        lateinit var parkingLotService: ParkingLotService
+        @BeforeClass
+        @JvmStatic
+        fun setup() {
+            parkingLotService = ParkingLotServiceImpl.initializeParkingLot(6)
+        }
+
+        @AfterClass
+        @JvmStatic
+        fun teardown() {
+
+        }
+    }
+
+
     @Before
     fun setUpStreams() {
         System.setOut(PrintStream(outContent))
     }
 
+    @After
+    fun clearStreams() {
+        System.setOut(null)
+    }
+
+    @Test
+    fun itShouldCreateASingleInstanceOfParkingLotService() {
+        val parkingLotService2 = ParkingLotServiceImpl.initializeParkingLot(6)
+        assertEquals(parkingLotService2, parkingLotService)
+    }
+
+    @Test
+    fun freeSlotCountTest() {
+        assertEquals(parkingLotService.getFreeSlotCount(), 6)
+    }
 
     @Test
     fun itShouldParkCars() {
-        val parkingLotService = ParkingLotServiceImpl.initializeParkingLot(6);
         val cars = listOf(
             Car("White", "KA-02-EU8901"),
             Car("Blue", "KA-01-AE9099"),
@@ -41,7 +71,6 @@ class ParkingLotTest {
 
     @Test
     fun shouldBecomeFullAfterCapacityIsExhausted() {
-        val parkingLotService = ParkingLotServiceImpl.initializeParkingLot(3);
         val cars = listOf<Car>(
             Car("Yellow", "KA-04-EM2123"),
             Car("Orange", "KA-21-EF4567"),
@@ -51,5 +80,6 @@ class ParkingLotTest {
         val isFull = parkingLotService.isParkingLotFull()
         assertEquals(isFull, true)
     }
+
 
 }
