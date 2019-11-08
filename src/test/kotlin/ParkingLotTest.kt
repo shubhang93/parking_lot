@@ -1,4 +1,5 @@
 import domain.Car
+import domain.ParkingSpot
 import org.junit.*
 import org.junit.Assert.assertEquals
 import services.ParkingLotService
@@ -77,9 +78,20 @@ class ParkingLotTest {
             Car("Blue", "KA-06-DS2123")
         )
         cars.forEach { car -> parkingLotService.park(car) }
-        val isFull = parkingLotService.isParkingLotFull()
-        assertEquals(isFull, true)
+        val freeSlots = parkingLotService.getFreeSlotCount()
+        assertEquals(0, freeSlots)
     }
 
+    @Test
+    fun itShouldUnParkCar() {
+        parkingLotService.unParkCar(ParkingSpot(2))
 
+        assertEquals("Slot Number 2 is free", outContent.toString().toString().trim())
+    }
+
+    @Test
+    fun itShouldReleaseParkingSpotAfterUnPark() {
+        parkingLotService.unParkCar(ParkingSpot(1))
+        assertEquals(2, parkingLotService.getFreeSlotCount())
+    }
 }
