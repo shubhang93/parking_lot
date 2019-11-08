@@ -20,10 +20,6 @@ class ParkingLotTest {
     }
 
 
-    fun restoreStreams() {
-        System.setOut(originalOut)
-    }
-
     @Test
     fun itShouldParkCars() {
         val parkingLotService = ParkingLotServiceImpl.initializeParkingLot(6);
@@ -51,7 +47,9 @@ class ParkingLotTest {
             Car("Orange", "KA-21-EF4567"),
             Car("Blue", "KA-06-DS2123")
         )
+        cars.forEach { car -> parkingLotService.park(car) }
         val isFull = parkingLotService.isParkingLotFull()
         assertEquals(isFull, true)
     }
+
 }
