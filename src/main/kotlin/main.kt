@@ -11,12 +11,15 @@ val SLOT_NUM_FOR_REG_NUM_QUERY = Regex("""slot_number_for_registration_number [a
 fun runInteractiveCli(parkingLotServiceImpl: ParkingLotServiceImpl) {
     loop@ while (true) {
         val userInput: String? = readLine()
-        when {
-            (userInput == "exit") -> break@loop
+        if (userInput != null)
+            when {
+                (userInput == "exit") -> break@loop
+                (userInput.matches(CREATE_COMMAND_REGEX)) -> println("$userInput")
+                (userInput.matches(PARK_COMMAND_REGEX)) -> println("$userInput")
+                else -> println("Invalid Command, please try again")
 
-            else -> println("Invalid Command, please try again")
+            }
 
-        }
     }
 }
 
@@ -25,6 +28,7 @@ fun main(args: Array<String>) {
     when (args.size) {
         0 -> {
             // Interactive Mode
+            runInteractiveCli(parkingService)
         }
         1 -> {
             // Read Commands from file
