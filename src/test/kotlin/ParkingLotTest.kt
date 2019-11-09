@@ -11,7 +11,6 @@ import java.io.PrintStream
 @FixMethodOrder(MethodSorters.JVM)
 class ParkingLotTest {
 
-
     private val outContent = ByteArrayOutputStream()
     private val originalOut = System.out
 
