@@ -7,12 +7,14 @@ class InMemoryIParkingLot() : IParkingLot {
     private val availableSpots = mutableListOf<ParkingSpot>()
     private val occupiedSpots = mutableMapOf<ParkingSpot, Car>()
     private val licensePlateToCarMapping = mutableMapOf<String, ParkingSpot>()
-
+    private var isInitialized = false
 
     override fun createParkingLot(size: Int) {
+        if (isInitialized) throw IllegalStateException("Initialization Error, Parking Lot has already been initialized")
         for (position in 1..size) {
             availableSpots.add(ParkingSpot(position))
         }
+        isInitialized = true
     }
 
 
@@ -27,12 +29,9 @@ class InMemoryIParkingLot() : IParkingLot {
         }
     }
 
-
     override fun getFreeSlots(): List<ParkingSpot> = availableSpots
 
-
     override fun getOccupiedSlots(): Map<ParkingSpot, Car> = occupiedSpots
-
 
     override fun park(car: Car): ParkingSpot? {
         return if (availableSpots.isNotEmpty()) {
