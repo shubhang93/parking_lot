@@ -1,10 +1,10 @@
+import dataManager.InMemoryIParkingLot
 import domain.Car
 import domain.ParkingSpot
 import org.junit.*
 import org.junit.Assert.assertEquals
 import org.junit.runners.MethodSorters
 import services.ParkingLotService
-import services.ParkingLotServiceImpl
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -20,7 +20,7 @@ class ParkingLotTest {
         @BeforeClass
         @JvmStatic
         fun setup() {
-            parkingLotService = ParkingLotServiceImpl.initializeParkingLot(6)
+            parkingLotService = ParkingLotService(InMemoryIParkingLot.createParkingLot(6))
         }
 
         @AfterClass
@@ -41,11 +41,6 @@ class ParkingLotTest {
         System.setOut(null)
     }
 
-    @Test
-    fun itShouldCreateASingleInstanceOfParkingLotService() {
-        val parkingLotService2 = ParkingLotServiceImpl.initializeParkingLot(6)
-        assertEquals(parkingLotService2, parkingLotService)
-    }
 
     @Test
     fun freeSlotCountTest() {
