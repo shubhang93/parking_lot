@@ -3,7 +3,7 @@ package services
 import domain.Car
 import domain.ParkingSpot
 
-interface ParkingLotService {
+interface IParkingLotService {
     fun park(car: Car)
 
     fun unParkCar(parkingSpot: ParkingSpot)
@@ -17,6 +17,5 @@ interface ParkingLotService {
     fun isParkingLotFull(): Boolean
 
     fun getFreeSlotCount(): Int
-
 
 }
