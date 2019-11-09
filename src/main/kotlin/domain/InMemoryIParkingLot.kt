@@ -13,7 +13,7 @@ class InMemoryIParkingLot(capacity: Int) : IParkingLot {
 
     companion object {
         private var instance: InMemoryIParkingLot? = null
-        fun initializeParkingLot(capacity: Int): InMemoryIParkingLot {
+        fun createParkingLot(capacity: Int): InMemoryIParkingLot {
             return if (instance == null) {
                 instance = InMemoryIParkingLot(capacity)
                 instance!!
