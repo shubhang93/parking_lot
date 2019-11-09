@@ -1,9 +1,10 @@
 import constants.CREATE_COMMAND_REGEX
 import constants.PARK_COMMAND_REGEX
-import services.ParkingLotServiceImpl
+import dataManager.InMemoryIParkingLot
+import services.ParkingLotService
 
 
-fun runInteractiveCli(parkingLotServiceImpl: ParkingLotServiceImpl) {
+fun runInteractiveCli(parkingLotService: ParkingLotService) {
     loop@ while (true) {
         val userInput: String? = readLine()
         if (userInput != null)
@@ -19,7 +20,7 @@ fun runInteractiveCli(parkingLotServiceImpl: ParkingLotServiceImpl) {
 }
 
 fun main(args: Array<String>) {
-    val parkingService = ParkingLotServiceImpl.initializeParkingLot(6)
+    val parkingLotService = ParkingLotService(InMemoryIParkingLot.createParkingLot(6))
     when (args.size) {
 
         1 -> {
@@ -28,7 +29,7 @@ fun main(args: Array<String>) {
         else -> {
             // Interactive Mode
             println("Welcome To Interactive Mode, awaiting User Input: ")
-            runInteractiveCli(parkingService)
+            runInteractiveCli(parkingLotService)
         }
     }
 }
