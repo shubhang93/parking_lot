@@ -5,6 +5,10 @@ import domain.Car
 import domain.ParkingSpot
 
 class ParkingLotService(val parkingLot: IParkingLot) : IParkingLotService {
+
+    private val headerSpacing = " ".repeat(4)
+    val rowSpacing = " ".repeat(11)
+
     override fun park(car: Car) {
         val parkingSpot = parkingLot.park(car)
         if (parkingSpot != null) println("Allocated slot number: ${parkingSpot.position}")
@@ -16,8 +20,12 @@ class ParkingLotService(val parkingLot: IParkingLot) : IParkingLotService {
         println("Slot number ${freeSpot.position} is free")
     }
 
-    override fun getStatus(): List<Map<String, String>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun printStatus() {
+        val header = "Slot No.${headerSpacing}Registration No${headerSpacing}Colour\n"
+        val rows = parkingLot.getOccupiedSlots().map {
+            "${it.key.position}${rowSpacing}${it.value.licensePlate}${rowSpacing}${it.value.color}\n"
+        }
     }
 
     override fun getSlotsByCarColor(color: String): List<Car> {

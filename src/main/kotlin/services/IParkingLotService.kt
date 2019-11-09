@@ -8,7 +8,7 @@ interface IParkingLotService {
 
     fun unParkCar(parkingSpot: ParkingSpot)
 
-    fun getStatus(): List<Map<String, String>>
+    fun printStatus()
 
     fun getSlotsByCarColor(color: String): List<Car>
 
