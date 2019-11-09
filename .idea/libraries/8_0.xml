@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="8.0">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/demo/nio/zipfs" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/annotations/DependencyChecker/PluginChecker/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/annotations/DependencyChecker/Plugins/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/annotations/Validator/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/forkjoin/mergesort" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/jmx/jmx-scandir/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/jmx/jmx-scandir/test" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/lambda/BulkDataOperations/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/lambda/DefaultMethods" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/nio/chatserver" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/nio/file" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/nio/multicast" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/nio/server" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/scripting/scriptpad/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu/sample/try-with-resources/src" />
+      <root url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../.sdkman/candidates/java/8.0.222-zulu" recursive="false" type="SOURCES" />
+  </library>
+</component>
