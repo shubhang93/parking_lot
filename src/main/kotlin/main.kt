@@ -4,13 +4,21 @@ import dataManager.InMemoryIParkingLot
 import services.ParkingLotService
 
 
+fun parseCommand(userInput: String): Pair<String, String> {
+    val (cmd, argument) = userInput.split(" ")
+    return Pair(cmd, argument)
+}
+
+
 fun runInteractiveCli(parkingLotService: ParkingLotService) {
     loop@ while (true) {
         val userInput: String? = readLine()
         if (userInput != null)
             when {
                 (userInput == "exit") -> break@loop
-                (userInput.matches(CREATE_COMMAND_REGEX)) -> println("$userInput")
+                (userInput.matches(CREATE_COMMAND_REGEX)) -> {
+
+                }
                 (userInput.matches(PARK_COMMAND_REGEX)) -> println("$userInput")
                 else -> println("Invalid Command, please try again")
 
