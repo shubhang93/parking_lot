@@ -43,12 +43,12 @@ class InMemoryIParkingLot(capacity: Int) : IParkingLot {
 
     }
 
-    override fun unpark(parkingSpot: ParkingSpot): ParkingSpot? {
+    override fun unpark(parkingSpot: ParkingSpot): ParkingSpot {
         return if (occupiedSpots[parkingSpot] != null) {
             occupiedSpots.remove(parkingSpot)
             availableSpots.add(parkingSpot)
             availableSpots.sortBy { it.position }
             parkingSpot
-        } else null
+        } else return parkingSpot
     }
 }
