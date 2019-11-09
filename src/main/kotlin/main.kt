@@ -4,19 +4,23 @@ import dataManager.InMemoryIParkingLot
 import services.ParkingLotService
 
 
-fun parseCommand(userInput: String): Pair<String, String> {
-    val (cmd, argument) = userInput.split(" ")
-    return Pair(cmd, argument)
+fun commandParser(userInput: String, regex: Regex): List<String> {
+    val match = regex.find(userInput)
+    return if (match != null) return match.groupValues.joinToString(" ").split(" ") else emptyList()
 }
 
 
-fun runInteractiveCli(parkingLotService: ParkingLotService) {
+fun runInteractiveCli() {
     loop@ while (true) {
         val userInput: String? = readLine()
         if (userInput != null)
             when {
                 (userInput == "exit") -> break@loop
                 (userInput.matches(CREATE_COMMAND_REGEX)) -> {
+                    val (_, capacity) = commandParser(userInput, CREATE_COMMAND_REGEX)
+                    println(capacity)
+                    val parkingLot = InMemoryIParkingLot.createParkingLot(capacity.toInt())
+                    println("Created a parking lot with $capacity slots")
 
                 }
                 (userInput.matches(PARK_COMMAND_REGEX)) -> println("$userInput")
@@ -36,8 +40,8 @@ fun main(args: Array<String>) {
         }
         else -> {
             // Interactive Mode
-            println("Welcome To Interactive Mode, awaiting User Input: ")
-            runInteractiveCli(parkingLotService)
+            println("Welcome To Interactive Mode, Enter exit to quit the Interactive Mode: ")
+            runInteractiveCli()
         }
     }
 }
