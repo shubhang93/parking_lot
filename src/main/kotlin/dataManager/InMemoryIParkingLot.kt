@@ -3,22 +3,24 @@ package dataManager
 import domain.Car
 import domain.ParkingSpot
 
-class InMemoryIParkingLot(capacity: Int) : IParkingLot {
+class InMemoryIParkingLot() : IParkingLot {
     private val availableSpots = mutableListOf<ParkingSpot>()
     private val occupiedSpots = mutableMapOf<ParkingSpot, Car>()
     private val licensePlateToCarMapping = mutableMapOf<String, ParkingSpot>()
 
-    init {
-        for (spotPosition in 1..capacity) {
-            availableSpots.add(ParkingSpot(spotPosition))
+
+    override fun createParkingLot(size: Int) {
+        for (position in 1..size) {
+            availableSpots.add(ParkingSpot(position))
         }
     }
 
+
     companion object {
         private var instance: InMemoryIParkingLot? = null
-        fun createParkingLot(capacity: Int): InMemoryIParkingLot {
+        fun invoke(): InMemoryIParkingLot {
             return if (instance == null) {
-                instance = InMemoryIParkingLot(capacity)
+                instance = InMemoryIParkingLot()
                 instance!!
             } else
                 instance!!

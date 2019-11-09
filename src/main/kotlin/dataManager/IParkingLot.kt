@@ -8,4 +8,5 @@ interface IParkingLot {
     fun unPark(parkingSpot: ParkingSpot): ParkingSpot
     fun getOccupiedSlots(): Map<ParkingSpot, Car>
     fun getFreeSlots(): List<ParkingSpot>
+    fun createParkingLot(size: Int)
 }
