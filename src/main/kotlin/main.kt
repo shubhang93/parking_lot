@@ -21,6 +21,7 @@ fun runInteractiveCli(parkingLotServiceImpl: ParkingLotServiceImpl) {
 fun main(args: Array<String>) {
     val parkingService = ParkingLotServiceImpl.initializeParkingLot(6)
     when (args.size) {
+
         1 -> {
             // Read Commands from file
         }
