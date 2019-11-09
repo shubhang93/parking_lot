@@ -40,7 +40,12 @@ class InMemoryIParkingLot(capacity: Int) : IParkingLot {
 
     }
 
-    override fun unpark() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun unpark(parkingSpot: ParkingSpot): ParkingSpot? {
+        return if (occupiedSpots[parkingSpot] != null) {
+            occupiedSpots.remove(parkingSpot)
+            availableSpots.add(parkingSpot)
+            availableSpots.sortBy { it.position }
+            parkingSpot
+        } else null
     }
 }
