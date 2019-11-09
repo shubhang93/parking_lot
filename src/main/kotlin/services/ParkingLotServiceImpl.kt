@@ -4,10 +4,10 @@ import dataManager.IParkingLot
 import domain.Car
 import domain.ParkingSpot
 
-class ParkingLotService(val parkingLot: IParkingLot) : IParkingLotService {
+class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotService {
 
     private val headerSpacing = " ".repeat(4)
-    val rowSpacing = " ".repeat(11)
+    private val rowSpacing = " ".repeat(11)
 
     override fun park(car: Car) {
         val parkingSpot = parkingLot.park(car)
@@ -26,22 +26,26 @@ class ParkingLotService(val parkingLot: IParkingLot) : IParkingLotService {
         val rows = parkingLot.getOccupiedSlots().map {
             "${it.key.position}${rowSpacing}${it.value.licensePlate}${rowSpacing}${it.value.color}\n"
         }
+        println(header + rows)
     }
 
-    override fun getSlotsByCarColor(color: String): List<Car> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun printSlotsByColor(color: String) {
+        val slotsAsCSV = parkingLot.getOccupiedSlots()
+            .filter { it.value.color == color }
+            .map { it.key.position }
+            .joinToString(",")
+        println(slotsAsCSV)
     }
 
-    override fun getSlotNumberByCarLicensePlate(licensePlate: String): Int? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getSlotNumberByCarLicensePlate(licensePlate: String) {
+        val slotsAsCSV = parkingLot.getOccupiedSlots()
+            .filter { it.value.licensePlate == licensePlate }
+            .map { it.key.position }
+            .joinToString { "," }
+        println(slotsAsCSV)
     }
 
-    override fun isParkingLotFull(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getFreeSlotCount() = parkingLot.getFreeSlots().size
 
-    override fun getFreeSlotCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 }

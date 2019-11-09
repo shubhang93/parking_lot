@@ -14,4 +14,7 @@ interface IParkingLotService {
 
     fun getSlotNumberByCarLicensePlate(licensePlate: String)
 
+    fun getFreeSlotCount(): Int
+
+
 }
