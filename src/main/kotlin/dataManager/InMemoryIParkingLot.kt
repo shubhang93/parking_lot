@@ -1,4 +1,7 @@
-package domain
+package dataManager
+
+import domain.Car
+import domain.ParkingSpot
 
 class InMemoryIParkingLot(capacity: Int) : IParkingLot {
     private val availableSpots = mutableListOf<ParkingSpot>()

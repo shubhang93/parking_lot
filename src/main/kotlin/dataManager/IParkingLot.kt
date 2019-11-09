@@ -1,4 +1,7 @@
-package domain
+package dataManager
+
+import domain.Car
+import domain.ParkingSpot
 
 interface IParkingLot {
     fun park(car: Car): ParkingSpot?
