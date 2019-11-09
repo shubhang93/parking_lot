@@ -81,7 +81,7 @@ class ParkingLotTest {
     fun itShouldUnParkCar() {
         parkingLotService.unParkCar(ParkingSpot(2))
 
-        assertEquals("Slot Number 2 is free", outContent.toString().toString().trim())
+        assertEquals("Slot number 2 is free", outContent.toString().toString().trim())
     }
 
     @Test
