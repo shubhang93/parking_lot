@@ -16,7 +16,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
     }
 
     override fun unParkCar(parkingSpot: ParkingSpot) {
-        val freeSpot = parkingLot.unpark(parkingSpot)
+        val freeSpot = parkingLot.unPark(parkingSpot)
         println("Slot number ${freeSpot.position} is free")
     }
 
