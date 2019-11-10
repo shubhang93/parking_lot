@@ -1,7 +1,4 @@
-import constants.CREATE_COMMAND_REGEX
-import constants.PARK_COMMAND_REGEX
-import constants.STATUS_COMMAND_REGEX
-import constants.UNPARK_COMMAND_REGEX
+import constants.*
 import dataManager.InMemoryIParkingLot
 import domain.Car
 import domain.ParkingSpot
@@ -37,6 +34,14 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
                 }
                 (userInput.matches(STATUS_COMMAND_REGEX)) -> {
                     parkingLotService.printStatus()
+                }
+                (userInput.matches(REG_NUMS_FOR_COLOR_QUERY_REGEX)) -> {
+                    val (_, color) = commandParser(userInput, REG_NUMS_FOR_COLOR_QUERY_REGEX)
+                    parkingLotService.printSlotsByColor(color)
+                }
+                (userInput.matches(SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)) -> {
+                    val (_, licensePlateNumber) = commandParser(userInput, SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)
+
                 }
                 else -> println("Invalid Command, please try again")
 
