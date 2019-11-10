@@ -10,7 +10,7 @@ import java.io.PrintStream
 
 const val PARKING_LOT_CAPACITY = 6
 
-@FixMethodOrder(MethodSorters.JVM)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class ParkingLotServiceTest {
 
     private val outContent = ByteArrayOutputStream()
@@ -46,13 +46,13 @@ class ParkingLotServiceTest {
 
 
     @Test
-    fun itShouldInitializeParkingLot() {
+    fun AitShouldInitializeParkingLot() {
         assertEquals(PARKING_LOT_CAPACITY, parkingLotService.getFreeSlotCount())
     }
 
 
     @Test
-    fun itShouldParkCars() {
+    fun BitShouldParkCars() {
         val cars = listOf(
             Car("White", "KA-02-EU8901"),
             Car("Blue", "KA-01-AE9099"),
@@ -70,7 +70,7 @@ class ParkingLotServiceTest {
     }
 
     @Test
-    fun shouldBecomeFullAfterCapacityIsExhausted() {
+    fun CshouldBecomeFullAfterCapacityIsExhausted() {
         val cars = listOf(
             Car("Yellow", "KA-04-EM2123"),
             Car("Orange", "KA-21-EF4567"),
@@ -82,13 +82,13 @@ class ParkingLotServiceTest {
     }
 
     @Test
-    fun itShouldUnParkCar() {
+    fun DitShouldUnParkCar() {
         parkingLotService.unParkCar(ParkingSpot(2))
         assertEquals("Slot number 2 is free", outContent.toString().toString().trim())
     }
 
     @Test
-    fun itShouldReleaseParkingSpotAfterUnPark() {
+    fun EitShouldReleaseParkingSpotAfterUnPark() {
         parkingLotService.unParkCar(ParkingSpot(1))
         assertEquals(2, parkingLotService.getFreeSlotCount())
     }
