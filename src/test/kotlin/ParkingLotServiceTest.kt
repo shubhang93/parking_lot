@@ -2,7 +2,7 @@ import dataManager.InMemoryIParkingLot
 import domain.Car
 import org.junit.*
 import org.junit.runners.MethodSorters
-import services.ParkingLotService
+import services.ParkingService
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
@@ -16,11 +16,11 @@ class ParkingLotServiceTest {
 
 
     companion object {
-        lateinit var parkingLotService: ParkingLotService
+        lateinit var parkingLotService: ParkingService
         @BeforeClass
         @JvmStatic
         fun setup() {
-            parkingLotService = ParkingLotService(InMemoryIParkingLot())
+            parkingLotService = ParkingService(InMemoryIParkingLot())
             parkingLotService.createParkingLot(PARKING_LOT_CAPACITY)
             val cars = listOf(
                 Car("White", "KA-01-AB-1234"),
@@ -49,8 +49,5 @@ class ParkingLotServiceTest {
     fun clearStreams() {
         System.setOut(null)
     }
-
-
-
 
 }

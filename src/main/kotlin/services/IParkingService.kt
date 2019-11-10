@@ -3,7 +3,7 @@ package services
 import domain.Car
 import domain.ParkingSpot
 
-interface IParkingLotService {
+interface IParkingService {
     fun park(car: Car)
 
     fun unParkCar(parkingSpot: ParkingSpot)

@@ -4,7 +4,7 @@ import dataManager.IParkingLot
 import domain.Car
 import domain.ParkingSpot
 
-class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotService {
+class ParkingService(private val parkingLot: IParkingLot) : IParkingService {
 
     private val headerSpacing = " ".repeat(4)
     private val firstColSpacing = " ".repeat(11)
