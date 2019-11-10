@@ -71,5 +71,13 @@ class ParkingLotTest {
         assertEquals(expected, results)
     }
 
+    @Test
+    fun itShouldAllocateTheNearestSpot() {
+        val expected = ParkingSpot(2)
+        val car = Car("Maroon", "KA-02-AM9098")
+        val result = inMemoryIParkingLot.park(car)
+        assertEquals(expected, result)
+    }
+
 
 }
