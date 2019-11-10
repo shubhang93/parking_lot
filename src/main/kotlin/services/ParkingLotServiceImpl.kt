@@ -54,5 +54,12 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
 
     override fun getFreeSlotCount() = parkingLot.getFreeSlots().size
 
+    override fun printRegistrationNumbersForColor(color: String) {
+        val licensePlateNumbersAsCSV = parkingLot.getOccupiedSlots().filter { (_, car) -> car.color == color }
+            .map { (_, car) -> car.licensePlate }
+            .joinToString(",")
+        println(licensePlateNumbersAsCSV)
+    }
+
 
 }

@@ -16,5 +16,7 @@ interface IParkingLotService {
 
     fun getFreeSlotCount(): Int
 
+    fun printRegistrationNumbersForColor(color: String)
+
 
 }
