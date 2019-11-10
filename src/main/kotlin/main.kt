@@ -41,6 +41,7 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
                 }
                 (userInput.matches(SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)) -> {
                     val (_, licensePlateNumber) = commandParser(userInput, SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)
+                    parkingLotService.printSlotNumberByLicensePlate(licensePlateNumber)
 
                 }
                 else -> println("Invalid Command, please try again")
