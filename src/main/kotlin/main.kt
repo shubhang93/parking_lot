@@ -35,14 +35,19 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
                 (userInput.matches(STATUS_COMMAND_REGEX)) -> {
                     parkingLotService.printStatus()
                 }
-                (userInput.matches(REG_NUMS_FOR_COLOR_QUERY_REGEX)) -> {
-                    val (_, color) = commandParser(userInput, REG_NUMS_FOR_COLOR_QUERY_REGEX)
+                (userInput.matches(SLOT_NUMS_FOR_COLOR_QUERY_REGEX)) -> {
+                    val (_, color) = commandParser(userInput, SLOT_NUMS_FOR_COLOR_QUERY_REGEX)
                     parkingLotService.printSlotsByColor(color)
                 }
                 (userInput.matches(SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)) -> {
                     val (_, licensePlateNumber) = commandParser(userInput, SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)
                     parkingLotService.printSlotNumberByLicensePlate(licensePlateNumber)
 
+                }
+
+                (userInput.matches(REG_NUMBERS_FOR_COLOR_QUERY_REGEX)) -> {
+                    val (_, color) = commandParser(userInput, REG_NUMBERS_FOR_COLOR_QUERY_REGEX)
+                    parkingLotService.printRegistrationNumbersForColor(color)
                 }
                 else -> println("Invalid Command, please try again")
 
