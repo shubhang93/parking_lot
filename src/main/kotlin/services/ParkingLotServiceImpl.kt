@@ -40,7 +40,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
         val slotsAsCSV = parkingLot.getOccupiedSlots()
             .filter { (_, car) -> car.color == color }
             .map { (parkingSpot, _) -> parkingSpot.position }
-            .joinToString(",")
+            .joinToString(" ,")
         println(slotsAsCSV)
     }
 
@@ -48,7 +48,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
         val slotsAsCSV = parkingLot.getOccupiedSlots()
             .filter { (_, car) -> car.licensePlate == licensePlate }
             .map { (parkingSpot, _) -> parkingSpot.position }
-            .joinToString { "," }
+            .joinToString { " ," }
         println(slotsAsCSV)
     }
 
@@ -57,7 +57,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
     override fun printRegistrationNumbersForColor(color: String) {
         val licensePlateNumbersAsCSV = parkingLot.getOccupiedSlots().filter { (_, car) -> car.color == color }
             .map { (_, car) -> car.licensePlate }
-            .joinToString(",")
+            .joinToString(" ,")
         println(licensePlateNumbersAsCSV)
     }
 
