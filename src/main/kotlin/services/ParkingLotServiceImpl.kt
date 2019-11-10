@@ -7,7 +7,8 @@ import domain.ParkingSpot
 class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotService {
 
     private val headerSpacing = " ".repeat(4)
-    private val rowSpacing = " ".repeat(11)
+    private val firstColSpacing = " ".repeat(11)
+    private val lastColSpacing = " ".repeat(6)
 
     fun createParkingLot(capacity: Int) {
         parkingLot.createParkingLot(capacity)
@@ -29,7 +30,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
     override fun printStatus() {
         val header = "Slot No.${headerSpacing}Registration No${headerSpacing}Colour"
         val rows = parkingLot.getOccupiedSlots().map {
-            "${it.key.position}${rowSpacing}${it.value.licensePlate}${rowSpacing}${it.value.color}"
+            "${it.key.position}${firstColSpacing}${it.value.licensePlate}${lastColSpacing}${it.value.color}"
         }.joinToString("\n")
         println(header + "\n" + rows)
     }
