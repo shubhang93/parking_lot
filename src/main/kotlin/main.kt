@@ -56,16 +56,17 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
     }
 }
 
+
 fun main(args: Array<String>) {
     val parkingLotService = ParkingLotService(InMemoryIParkingLot())
     when (args.size) {
 
         1 -> {
             // Read Commands from file
+
         }
         else -> {
             // Interactive Mode
-            println("Welcome To Interactive Mode, Enter exit to quit the Interactive Mode: ")
             runInteractiveCli(parkingLotService)
         }
     }

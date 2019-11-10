@@ -5,3 +5,6 @@
 #
 # After this is run, bin/parking_lot
 # should Just Work.
+cd ../
+./gradlew clean build
+./run_functional_tests

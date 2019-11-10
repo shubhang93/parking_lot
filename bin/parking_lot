@@ -5,7 +5,7 @@
 # it.
 
 # This variable contains absolute path of this `parking_lot` script
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
 
 # Use DIR variable above to pinpoint your jar/executable/main class
 # e.g.
@@ -15,5 +15,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 #   python3 $DIR/../main.py $1
 # - if ruby
 #   ruby $DIR/../main.rb $1
-# 
+#
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
+
+- if java
+java -jar $DIR/../build/libs/parkinglot-1.0-SNAPSHOT-all.jar
