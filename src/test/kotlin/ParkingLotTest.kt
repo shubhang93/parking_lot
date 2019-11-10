@@ -7,6 +7,8 @@ import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
+const val MAX_PARKING_LOT_CAPACITY = 6
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class ParkingLotTest {
 
@@ -22,7 +24,7 @@ class ParkingLotTest {
 
     @Test(expected = IllegalStateException::class)
     fun A_itShouldInitializeExactlyOnce() {
-        inMemoryIParkingLot.createParkingLot(6)
+        inMemoryIParkingLot.createParkingLot(MAX_PARKING_LOT_CAPACITY)
         inMemoryIParkingLot.createParkingLot(5)
     }
 
@@ -86,7 +88,7 @@ class ParkingLotTest {
             ParkingSpot(5) to Car("Violet", "KA-50-MB9021"),
             ParkingSpot(6) to Car("Brown", "GJ-01-EW1234"),
             ParkingSpot(2) to Car("Maroon", "KA-02-AM9098")
-            )
+        )
 
         val result = inMemoryIParkingLot.getOccupiedSlots()
         assertEquals(expected, result)
