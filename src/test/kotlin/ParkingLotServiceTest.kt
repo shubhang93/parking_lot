@@ -8,6 +8,8 @@ import services.ParkingLotService
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 
+const val PARKING_LOT_CAPACITY = 6
+
 @FixMethodOrder(MethodSorters.JVM)
 class ParkingLotServiceTest {
 
@@ -20,7 +22,8 @@ class ParkingLotServiceTest {
         @BeforeClass
         @JvmStatic
         fun setup() {
-            parkingLotService = ParkingLotService(InMemoryIParkingLot.createParkingLot(6))
+            parkingLotService = ParkingLotService(InMemoryIParkingLot())
+            parkingLotService.createParkingLot(PARKING_LOT_CAPACITY)
         }
 
         @AfterClass
@@ -32,7 +35,7 @@ class ParkingLotServiceTest {
 
 
     @Before
-    fun setUpStreams() {
+    fun setupStreams() {
         System.setOut(PrintStream(outContent))
     }
 
@@ -43,9 +46,10 @@ class ParkingLotServiceTest {
 
 
     @Test
-    fun freeSlotCountTest() {
-        assertEquals(parkingLotService.getFreeSlotCount(), 6)
+    fun itShouldInitializeParkingLot() {
+        assertEquals(PARKING_LOT_CAPACITY, parkingLotService.getFreeSlotCount())
     }
+
 
     @Test
     fun itShouldParkCars() {
@@ -67,7 +71,7 @@ class ParkingLotServiceTest {
 
     @Test
     fun shouldBecomeFullAfterCapacityIsExhausted() {
-        val cars = listOf<Car>(
+        val cars = listOf(
             Car("Yellow", "KA-04-EM2123"),
             Car("Orange", "KA-21-EF4567"),
             Car("Blue", "KA-06-DS2123")
@@ -80,7 +84,6 @@ class ParkingLotServiceTest {
     @Test
     fun itShouldUnParkCar() {
         parkingLotService.unParkCar(ParkingSpot(2))
-
         assertEquals("Slot number 2 is free", outContent.toString().toString().trim())
     }
 
