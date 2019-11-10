@@ -2,7 +2,7 @@ package cli
 
 import domain.Car
 import domain.ParkingSpot
-import services.ParkingLotService
+import services.ParkingService
 
 fun commandParser(userInput: String, regex: Regex): List<String> {
     val match = regex.find(userInput)
@@ -10,7 +10,7 @@ fun commandParser(userInput: String, regex: Regex): List<String> {
 }
 
 
-fun commandExecutor(userInput: String, parkingLotService: ParkingLotService) {
+fun commandExecutor(userInput: String, parkingLotService: ParkingService) {
     when {
         (userInput.matches(CREATE_COMMAND_REGEX)) -> {
             val (_, capacity) = commandParser(userInput, CREATE_COMMAND_REGEX)

@@ -1,10 +1,10 @@
 import cli.commandExecutor
 import dataManager.InMemoryIParkingLot
-import services.ParkingLotService
+import services.ParkingService
 import java.io.File
 
 
-fun runInteractiveCli(parkingLotService: ParkingLotService) {
+fun runInteractiveCli(parkingLotService: ParkingService) {
     loop@ while (true) {
         val userInput: String? = readLine()
         if (userInput != null) {
@@ -14,7 +14,7 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
     }
 }
 
-fun fileInputCli(commandFilepath: String, parkingLotService: ParkingLotService) {
+fun fileInputCli(commandFilepath: String, parkingLotService: ParkingService) {
     val commands = mutableListOf<String>()
     File(commandFilepath).forEachLine { line -> commands.add(line) }
     commands.forEach { command -> commandExecutor(command, parkingLotService) }
@@ -22,7 +22,7 @@ fun fileInputCli(commandFilepath: String, parkingLotService: ParkingLotService) 
 
 
 fun main(args: Array<String>) {
-    val parkingLotService = ParkingLotService(InMemoryIParkingLot())
+    val parkingLotService = ParkingService(InMemoryIParkingLot())
     when (args.size) {
         1 -> {
             // Read Commands from file
