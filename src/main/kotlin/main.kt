@@ -3,6 +3,7 @@ import dataManager.InMemoryIParkingLot
 import domain.Car
 import domain.ParkingSpot
 import services.ParkingLotService
+import java.io.File
 
 
 fun commandParser(userInput: String, regex: Regex): List<String> {
@@ -12,6 +13,14 @@ fun commandParser(userInput: String, regex: Regex): List<String> {
 
 fun commandExecutor(userInput: String, parkingLotService: ParkingLotService) {
     when {
+
+        (userInput.matches(CREATE_COMMAND_REGEX)) -> {
+            val (_, capacity) = commandParser(userInput, CREATE_COMMAND_REGEX)
+            parkingLotService.createParkingLot(capacity.toInt())
+            println("Created a parking lot with $capacity slots")
+
+        }
+
         (userInput.matches(PARK_COMMAND_REGEX)) -> {
             val (_, licensePlate, color) = commandParser(userInput, PARK_COMMAND_REGEX)
             parkingLotService.park(Car(color, licensePlate))
@@ -62,7 +71,10 @@ fun main(args: Array<String>) {
 
         1 -> {
             // Read Commands from file
-
+            val commands = mutableListOf<String>()
+            val commandFilePath = args[0]
+            File(commandFilePath).forEachLine { line -> commands.add(line) }
+            commands.forEach { command -> commandExecutor(command, parkingLotService) }
 
         }
         else -> {
@@ -71,3 +83,4 @@ fun main(args: Array<String>) {
         }
     }
 }
+
