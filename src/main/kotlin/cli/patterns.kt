@@ -1,4 +1,4 @@
-package constants
+package cli
 
 val CREATE_COMMAND_REGEX = Regex("""create_parking_lot \d+""")
 val PARK_COMMAND_REGEX = Regex("""park [a-zA-Z]+-\d+-[a-zA-Z]+-\d+ [a-zA-Z]+""")
