@@ -12,7 +12,7 @@ interface IParkingLotService {
 
     fun printSlotsByColor(color: String)
 
-    fun getSlotNumberByCarLicensePlate(licensePlate: String)
+    fun printSlotNumberByLicensePlate(licensePlate: String)
 
     fun getFreeSlotCount(): Int
 

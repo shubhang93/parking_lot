@@ -44,7 +44,7 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
         println(slotsAsCSV)
     }
 
-    override fun getSlotNumberByCarLicensePlate(licensePlate: String) {
+    override fun printSlotNumberByLicensePlate(licensePlate: String) {
         val slotsAsCSV = parkingLot.getOccupiedSlots()
             .filter { (_, car) -> car.licensePlate == licensePlate }
             .map { (parkingSpot, _) -> parkingSpot.position }
