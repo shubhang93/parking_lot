@@ -1,6 +1,7 @@
 import dataManager.InMemoryIParkingLot
 import domain.Car
 import domain.ParkingSpot
+import org.junit.AfterClass
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
 import org.junit.FixMethodOrder
@@ -18,6 +19,12 @@ class ParkingLotTest {
         @BeforeClass
         fun setup() {
             inMemoryIParkingLot = InMemoryIParkingLot()
+        }
+
+        @JvmStatic
+        @AfterClass
+        fun teardown() {
+            inMemoryIParkingLot.resetParkingLot()
         }
     }
 
