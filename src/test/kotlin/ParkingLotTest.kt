@@ -1,6 +1,6 @@
-import dataManager.InMemoryIParkingLot
-import domain.Car
-import domain.ParkingSpot
+import com.shubhang.dataManager.InMemoryIParkingLot
+import com.shubhang.domain.Car
+import com.shubhang.domain.ParkingSpot
 import org.junit.AfterClass
 import org.junit.Assert.assertEquals
 import org.junit.BeforeClass
@@ -70,7 +70,10 @@ class ParkingLotTest {
     @Test
     fun C_itShouldUnParkCarsAtSpotFourAndTwo() {
         val positions = listOf<Int>(2, 4)
-        val expected = listOf<ParkingSpot>(ParkingSpot(2), ParkingSpot(4))
+        val expected = listOf<ParkingSpot>(
+            ParkingSpot(2),
+            ParkingSpot(4)
+        )
         val results = mutableListOf<ParkingSpot>()
         positions.forEach { position ->
             val parkingSpot = inMemoryIParkingLot.unPark(ParkingSpot(position))

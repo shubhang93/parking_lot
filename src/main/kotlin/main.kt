@@ -1,6 +1,6 @@
-import cli.commandExecutor
-import dataManager.InMemoryIParkingLot
-import services.ParkingService
+import com.shubhang.cli.commandExecutor
+import com.shubhang.dataManager.InMemoryIParkingLot
+import com.shubhang.services.ParkingService
 import java.io.File
 
 

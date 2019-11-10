@@ -1,8 +1,8 @@
-package cli
+package com.shubhang.cli
 
-import domain.Car
-import domain.ParkingSpot
-import services.ParkingService
+import com.shubhang.domain.Car
+import com.shubhang.domain.ParkingSpot
+import com.shubhang.services.ParkingService
 
 fun commandParser(userInput: String, regex: Regex): List<String> {
     val match = regex.find(userInput)
@@ -18,7 +18,10 @@ fun commandExecutor(userInput: String, parkingLotService: ParkingService) {
             println("Created a parking lot with $capacity slots")
         }
         (userInput.matches(PARK_COMMAND_REGEX)) -> {
-            val (_, licensePlate, color) = commandParser(userInput, PARK_COMMAND_REGEX)
+            val (_, licensePlate, color) = commandParser(
+                userInput,
+                PARK_COMMAND_REGEX
+            )
             parkingLotService.park(Car(color, licensePlate))
         }
         (userInput.matches(UNPARK_COMMAND_REGEX)) -> {
@@ -33,11 +36,17 @@ fun commandExecutor(userInput: String, parkingLotService: ParkingService) {
             parkingLotService.printSlotsByColor(color)
         }
         (userInput.matches(SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)) -> {
-            val (_, licensePlateNumber) = commandParser(userInput, SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)
+            val (_, licensePlateNumber) = commandParser(
+                userInput,
+                SLOT_NUM_FOR_REG_NUM_QUERY_REGEX
+            )
             parkingLotService.printSlotNumberByLicensePlate(licensePlateNumber)
         }
         (userInput.matches(REG_NUMBERS_FOR_COLOR_QUERY_REGEX)) -> {
-            val (_, color) = commandParser(userInput, REG_NUMBERS_FOR_COLOR_QUERY_REGEX)
+            val (_, color) = commandParser(
+                userInput,
+                REG_NUMBERS_FOR_COLOR_QUERY_REGEX
+            )
             parkingLotService.printRegistrationNumbersForColor(color)
         }
         else -> println("Invalid Command, please try again")

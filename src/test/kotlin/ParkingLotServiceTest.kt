@@ -1,8 +1,8 @@
-import dataManager.InMemoryIParkingLot
-import domain.Car
+import com.shubhang.dataManager.InMemoryIParkingLot
+import com.shubhang.domain.Car
 import org.junit.*
 import org.junit.runners.MethodSorters
-import services.ParkingService
+import com.shubhang.services.ParkingService
 import java.io.ByteArrayOutputStream
 import java.io.PrintStream
 

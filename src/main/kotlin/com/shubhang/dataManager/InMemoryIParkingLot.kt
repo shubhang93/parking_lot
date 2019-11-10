@@ -1,7 +1,7 @@
-package dataManager
+package com.shubhang.dataManager
 
-import domain.Car
-import domain.ParkingSpot
+import com.shubhang.domain.Car
+import com.shubhang.domain.ParkingSpot
 
 class InMemoryIParkingLot() : IParkingLot {
     private val availableSpots = mutableListOf<ParkingSpot>()
@@ -22,7 +22,8 @@ class InMemoryIParkingLot() : IParkingLot {
         private var instance: InMemoryIParkingLot? = null
         fun invoke(): InMemoryIParkingLot {
             return if (instance == null) {
-                instance = InMemoryIParkingLot()
+                instance =
+                    InMemoryIParkingLot()
                 instance!!
             } else
                 instance!!

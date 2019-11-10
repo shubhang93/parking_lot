@@ -1,7 +1,7 @@
-package dataManager
+package com.shubhang.dataManager
 
-import domain.Car
-import domain.ParkingSpot
+import com.shubhang.domain.Car
+import com.shubhang.domain.ParkingSpot
 
 interface IParkingLot {
     fun park(car: Car): ParkingSpot?

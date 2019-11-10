@@ -1,8 +1,8 @@
-package services
+package com.shubhang.services
 
-import dataManager.IParkingLot
-import domain.Car
-import domain.ParkingSpot
+import com.shubhang.dataManager.IParkingLot
+import com.shubhang.domain.Car
+import com.shubhang.domain.ParkingSpot
 
 class ParkingService(private val parkingLot: IParkingLot) : IParkingService {
 
