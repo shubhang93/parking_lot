@@ -45,11 +45,14 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
     }
 
     override fun printSlotNumberByLicensePlate(licensePlate: String) {
-        val slotsAsCSV = parkingLot.getOccupiedSlots()
+        val parkingSpot = parkingLot.getOccupiedSlots()
             .filter { (_, car) -> car.licensePlate == licensePlate }
-            .map { (parkingSpot, _) -> parkingSpot.position }
-            .joinToString { ", " }
-        println(slotsAsCSV)
+            .map { (parkingSpot, _) -> parkingSpot }
+            .firstOrNull()
+        if (parkingSpot != null) {
+            println(parkingSpot.position)
+        } else println("Not found")
+
     }
 
     override fun getFreeSlotCount() = parkingLot.getFreeSlots().size
@@ -60,6 +63,5 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
             .joinToString(", ")
         println(licensePlateNumbersAsCSV)
     }
-
 
 }
