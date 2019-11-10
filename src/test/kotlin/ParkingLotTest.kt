@@ -1,20 +1,75 @@
 import dataManager.InMemoryIParkingLot
+import domain.Car
+import domain.ParkingSpot
 import org.junit.Assert.assertEquals
+import org.junit.BeforeClass
+import org.junit.FixMethodOrder
 import org.junit.Test
+import org.junit.runners.MethodSorters
 
+@FixMethodOrder(MethodSorters.JVM)
 class ParkingLotTest {
-    @Test
-    fun itShouldCreateASingleTonObject() {
-        val parkingLot1 = InMemoryIParkingLot().createParkingLot(6)
-        val parkingLot2 = InMemoryIParkingLot().createParkingLot(2)
-        assertEquals(parkingLot1, parkingLot2)
+
+    companion object {
+        lateinit var inMemoryIParkingLot: InMemoryIParkingLot
+        @JvmStatic
+        @BeforeClass
+        fun setup() {
+            inMemoryIParkingLot = InMemoryIParkingLot()
+        }
     }
+
 
     @Test(expected = IllegalStateException::class)
     fun itShouldInitializeExactlyOnce() {
-        val inMemoryIParkingLot = InMemoryIParkingLot()
         inMemoryIParkingLot.createParkingLot(6)
         inMemoryIParkingLot.createParkingLot(5)
 
     }
+
+    @Test
+    fun itShouldParkSixCars() {
+        val cars = listOf(
+            Car("White", "KA-02-EU8901"),
+            Car("Blue", "KA-01-AE9099"),
+            Car("Yellow", "KA-02-DV8900"),
+            Car("Orange", "KA-53-TR1234"),
+            Car("Violet", "KA-50-MB9021"),
+            Car("Brown", "GJ-01-EW1234"),
+            Car("Orange", "CH-02-EB9292")
+        )
+        val expected = listOf(
+            ParkingSpot(1),
+            ParkingSpot(2),
+            ParkingSpot(3),
+            ParkingSpot(4),
+            ParkingSpot(5),
+            ParkingSpot(6),
+            null
+        )
+
+        val results = mutableListOf<ParkingSpot?>()
+
+        cars.forEach { car ->
+            val parkingSpot = inMemoryIParkingLot.park(car)
+            results.add(parkingSpot)
+        }
+
+        assertEquals(expected, results)
+
+    }
+
+    @Test
+    fun itShouldUnParkCarsAtSpotFourAndTwo() {
+        val positions = listOf<Int>(2, 4)
+        val expected = listOf<ParkingSpot>(ParkingSpot(2), ParkingSpot(4))
+        val results = mutableListOf<ParkingSpot>()
+        positions.forEach { position ->
+            val parkingSpot = inMemoryIParkingLot.unPark(ParkingSpot(position))
+            results.add(parkingSpot)
+        }
+        assertEquals(expected, results)
+    }
+
+
 }
