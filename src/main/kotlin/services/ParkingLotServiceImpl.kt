@@ -38,16 +38,16 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
 
     override fun printSlotsByColor(color: String) {
         val slotsAsCSV = parkingLot.getOccupiedSlots()
-            .filter { it.value.color == color }
-            .map { it.key.position }
+            .filter { (_, car) -> car.color == color }
+            .map { (parkingSpot, _) -> parkingSpot.position }
             .joinToString(",")
         println(slotsAsCSV)
     }
 
     override fun getSlotNumberByCarLicensePlate(licensePlate: String) {
         val slotsAsCSV = parkingLot.getOccupiedSlots()
-            .filter { it.value.licensePlate == licensePlate }
-            .map { it.key.position }
+            .filter { (_, car) -> car.licensePlate == licensePlate }
+            .map { (parkingSpot, _) -> parkingSpot.position }
             .joinToString { "," }
         println(slotsAsCSV)
     }
