@@ -17,5 +17,4 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
 #   ruby $DIR/../main.rb $1
 #
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
-
-java -jar "$DIR/../build/libs/parkinglot-1.0-SNAPSHOT-all.jar"
+java -jar "$DIR/../build/libs/parkinglot-1.0-SNAPSHOT-all.jar" $1
