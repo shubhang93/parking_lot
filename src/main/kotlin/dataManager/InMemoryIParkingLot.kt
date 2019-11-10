@@ -52,4 +52,14 @@ class InMemoryIParkingLot() : IParkingLot {
             parkingSpot
         } else return parkingSpot
     }
+
+    override fun resetParkingLot() {
+        if (instance != null) {
+            instance = null
+        }
+        isInitialized = false
+        licensePlateToCarMapping.clear()
+        availableSpots.clear()
+        occupiedSpots.clear()
+    }
 }
