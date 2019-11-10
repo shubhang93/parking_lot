@@ -14,6 +14,7 @@ fun commandParser(userInput: String, regex: Regex): List<String> {
 fun runInteractiveCli(parkingLotService: ParkingLotService) {
     loop@ while (true) {
         val userInput: String? = readLine()
+        println(userInput)
         if (userInput != null)
             when {
                 (userInput == "exit") -> break@loop
@@ -63,6 +64,7 @@ fun main(args: Array<String>) {
 
         1 -> {
             // Read Commands from file
+
 
         }
         else -> {
