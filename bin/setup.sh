@@ -8,3 +8,4 @@
 cd ../
 ./gradlew clean build
 ./run_functional_tests
+./bin/parking_lot
