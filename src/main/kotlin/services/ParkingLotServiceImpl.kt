@@ -29,9 +29,10 @@ class ParkingLotService(private val parkingLot: IParkingLot) : IParkingLotServic
 
     override fun printStatus() {
         val header = "Slot No.${headerSpacing}Registration No${headerSpacing}Colour"
-        val rows = parkingLot.getOccupiedSlots().map {
-            "${it.key.position}${firstColSpacing}${it.value.licensePlate}${lastColSpacing}${it.value.color}"
-        }.joinToString("\n")
+        val rows = parkingLot.getOccupiedSlots()
+            .map { (parkingSpot, car) ->
+                "${parkingSpot.position}${firstColSpacing}${car.licensePlate}${lastColSpacing}${car.color}"
+            }.joinToString("\n")
         println(header + "\n" + rows)
     }
 
