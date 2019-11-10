@@ -21,13 +21,13 @@ class ParkingLotTest {
 
 
     @Test(expected = IllegalStateException::class)
-    fun AitShouldInitializeExactlyOnce() {
+    fun A_itShouldInitializeExactlyOnce() {
         inMemoryIParkingLot.createParkingLot(6)
         inMemoryIParkingLot.createParkingLot(5)
     }
 
     @Test
-    fun BitShouldParkSixCars() {
+    fun B_itShouldParkSixCars() {
         val cars = listOf(
             Car("White", "KA-02-EU8901"),
             Car("Blue", "KA-01-AE9099"),
@@ -59,7 +59,7 @@ class ParkingLotTest {
     }
 
     @Test
-    fun CitShouldUnParkCarsAtSpotFourAndTwo() {
+    fun C_itShouldUnParkCarsAtSpotFourAndTwo() {
         val positions = listOf<Int>(2, 4)
         val expected = listOf<ParkingSpot>(ParkingSpot(2), ParkingSpot(4))
         val results = mutableListOf<ParkingSpot>()
@@ -71,7 +71,7 @@ class ParkingLotTest {
     }
 
     @Test
-    fun DitShouldAllocateTheNearestSpot() {
+    fun D_itShouldAllocateTheNearestSpot() {
         val expected = ParkingSpot(2)
         val car = Car("Maroon", "KA-02-AM9098")
         val result = inMemoryIParkingLot.park(car)
@@ -79,7 +79,7 @@ class ParkingLotTest {
     }
 
     @Test
-    fun EitShouldReturnParkingLotStatus() {
+    fun E_itShouldReturnParkingLotStatus() {
         val expected: Map<ParkingSpot, Car> = mapOf(
             ParkingSpot(1) to Car("White", "KA-02-EU8901"),
             ParkingSpot(3) to Car("Yellow", "KA-02-DV8900"),
