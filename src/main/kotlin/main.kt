@@ -1,57 +1,7 @@
-import constants.*
+import cli.commandExecutor
 import dataManager.InMemoryIParkingLot
-import domain.Car
-import domain.ParkingSpot
 import services.ParkingLotService
 import java.io.File
-
-
-fun commandParser(userInput: String, regex: Regex): List<String> {
-    val match = regex.find(userInput)
-    return if (match != null) return match.groupValues.joinToString(" ").split(" ") else emptyList()
-}
-
-fun commandExecutor(userInput: String, parkingLotService: ParkingLotService) {
-    when {
-
-        (userInput.matches(CREATE_COMMAND_REGEX)) -> {
-            val (_, capacity) = commandParser(userInput, CREATE_COMMAND_REGEX)
-            parkingLotService.createParkingLot(capacity.toInt())
-            println("Created a parking lot with $capacity slots")
-
-        }
-
-        (userInput.matches(PARK_COMMAND_REGEX)) -> {
-            val (_, licensePlate, color) = commandParser(userInput, PARK_COMMAND_REGEX)
-            parkingLotService.park(Car(color, licensePlate))
-
-        }
-        (userInput.matches(UNPARK_COMMAND_REGEX)) -> {
-            val (_, slotNumber) = commandParser(userInput, UNPARK_COMMAND_REGEX)
-            parkingLotService.unParkCar(ParkingSpot(slotNumber.toInt()))
-        }
-        (userInput.matches(STATUS_COMMAND_REGEX)) -> {
-            parkingLotService.printStatus()
-        }
-        (userInput.matches(SLOT_NUMS_FOR_COLOR_QUERY_REGEX)) -> {
-            val (_, color) = commandParser(userInput, SLOT_NUMS_FOR_COLOR_QUERY_REGEX)
-            parkingLotService.printSlotsByColor(color)
-        }
-        (userInput.matches(SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)) -> {
-            val (_, licensePlateNumber) = commandParser(userInput, SLOT_NUM_FOR_REG_NUM_QUERY_REGEX)
-            parkingLotService.printSlotNumberByLicensePlate(licensePlateNumber)
-
-        }
-
-        (userInput.matches(REG_NUMBERS_FOR_COLOR_QUERY_REGEX)) -> {
-            val (_, color) = commandParser(userInput, REG_NUMBERS_FOR_COLOR_QUERY_REGEX)
-            parkingLotService.printRegistrationNumbersForColor(color)
-        }
-        else -> println("Invalid Command, please try again")
-
-    }
-
-}
 
 
 fun runInteractiveCli(parkingLotService: ParkingLotService) {
@@ -64,17 +14,19 @@ fun runInteractiveCli(parkingLotService: ParkingLotService) {
     }
 }
 
+fun fileInputCli(commandFilepath: String, parkingLotService: ParkingLotService) {
+    val commands = mutableListOf<String>()
+    File(commandFilepath).forEachLine { line -> commands.add(line) }
+    commands.forEach { command -> commandExecutor(command, parkingLotService) }
+}
+
 
 fun main(args: Array<String>) {
     val parkingLotService = ParkingLotService(InMemoryIParkingLot())
     when (args.size) {
-
         1 -> {
             // Read Commands from file
-            val commands = mutableListOf<String>()
-            val commandFilePath = args[0]
-            File(commandFilePath).forEachLine { line -> commands.add(line) }
-            commands.forEach { command -> commandExecutor(command, parkingLotService) }
+            fileInputCli(args[0], parkingLotService)
 
         }
         else -> {
