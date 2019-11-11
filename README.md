@@ -41,6 +41,7 @@ slot_number_for_registration_number MH-04-AY-1111
 - To park a car enter: park \<car_license_plate_number> \<color>
 - To view the parking lot status enter: status
 - To free a parking spot enter: leave \<slot_number>
+- To view license plate numbers of cars for a specific color enter: registration_numbers_for_cars_with_colour \<color>
 - To view slots occupied by a specific car color enter: slot_numbers_for_cars_with_colour \<color>
 - To view a slot occupied by a car with a specific license plate number enter: slot_number_for_registration_number \<license_plate_number>
 - To Quit the CLI enter: exit
