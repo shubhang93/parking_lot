@@ -1,6 +1,12 @@
 ## Parking Lot
 #### A Parking lot ticketing system
 
+### Requirements
+```text
+- Java 8
+- JUnit 4.12
+- gradle
+```
 
 ## How to use
 - Download the parking_lot-master.zip
