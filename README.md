@@ -12,15 +12,15 @@
 - Download the parking_lot-master.zip
 - Run the setup.sh from the bin folder to install dependencies, build and test the functional specs. 
 ```shell script
-./bin/setup.sh
+./bin/setup
 ```
 - Run the parking_lot.sh binary executable from the bin folder to run in interactive mode.
 ```shell script
-./bin/parking_lot.sh
+./bin/parking_lot
 ```
 - Run the parking_lot.sh with a file input as the argument to process commands from a file
 ```shell script
-./bin/parking_lot.sh /user/command.txt
+./bin/parking_lot /user/command.txt
 ``` 
 
 ### Command file format
