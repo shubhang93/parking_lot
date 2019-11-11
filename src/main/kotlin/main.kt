@@ -1,4 +1,5 @@
 import com.shubhang.cli.commandExecutor
+import com.shubhang.cli.commandUsagePrinter
 import com.shubhang.dataManager.InMemoryIParkingLot
 import com.shubhang.services.ParkingService
 import java.io.File
@@ -31,6 +32,7 @@ fun main(args: Array<String>) {
         }
         else -> {
             // Interactive Mode
+            commandUsagePrinter()
             runInteractiveCli(parkingLotService)
         }
     }
